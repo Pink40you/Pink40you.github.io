@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pink4You Proxy</title>
+<link rel="icon" type="image/png" href="pink4you.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  /* Body with dark background and pink particles effect (using a background image or gradient for simplicity here) */
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    height: 100vh;
+    background: radial-gradient(circle, #ff69b4, #222); /* Pink particles effect */
+    background-size: cover;
+    color: #ff69b4; /* Pink text color */
+  }
+
+  /* Sidebar menu styling */
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #222, #111);
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .sidebar h1 {
+    color: #ff69b4;
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu li {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .menu li:hover {
+    background: #ff69b4;
+    color: #222;
+  }
+
+  .menu li i {
+    margin-right: 12px;
+  }
+
+  /* Main content style */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .topbar {
+    padding: 10px 20px;
+    background: #222;
+    color: #ff69b4;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* iframe container */
+  .iframe-container {
+    flex: 1;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Scrollbar styling for sidebar (optional) */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ff69b4;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h1>Pink4You</h1>
+  <ul class="menu" id="proxyList">
+    <li data-url="https://proxyium.com/"><i class="fas fa-globe"></i> Proxyium</li>
+    <li data-url="https://www.croxyproxy.com/"><i class="fas fa-globe"></i> CroxyProxy</li>
+    <li data-url="https://www.blockaway.net/"><i class="fas fa-globe"></i> BlockAway</li>
+    <li data-url="https://proxyorb.com/"><i class="fas fa-globe"></i> ProxyOrb</li>
+    <li data-url="https://siteproxy.ai/"><i class="fas fa-globe"></i> SiteProxy AI</li>
+    <li data-url="https://www.proxysite.com/"><i class="fas fa-globe"></i> Proxysite</li>
+    <li data-url="https://coproxy.io/free-web-proxy-unblock-any-site/"><i class="fas fa-globe"></i> Coproxy</li>
+    <li data-url="https://nettleweb.com/"><i class="fas fa-globe"></i> NettleWeb</li>
+    <li data-url="https://www-proxy.hidester.one/"><i class="fas fa-globe"></i> Hidester Proxy</li>
+    <li data-url="https://www.4everproxy.com/"><i class="fas fa-globe"></i> 4everProxy</li>
+    <li data-url="https://www.filterbypass.me/"><i class="fas fa-globe"></i> FilterBypass</li>
+    <li data-url="https://freeproxy.win/"><i class="fas fa-globe"></i> FreeProxy</li>
+    <li data-url="https://www.genmirror.com/"><i class="fas fa-globe"></i> GenMirror</li>
+    <li data-url="https://us3.my-proxy.com/"><i class="fas fa-globe"></i> My Proxy US3</li>
+    <li data-url="https://www.proxymefree.com/"><i class="fas fa-globe"></i> ProxyMeFree</li>
+    <li data-url="https://proxysite.one/"><i class="fas fa-globe"></i> Proxysite One</li>
+    <li data-url="https://www.sslsecureproxy.com/"><i class="fas fa-globe"></i> SSL Secure Proxy</li>
+    <li data-url="https://www.dropcatch.com/domain/sudoproxy.net"><i class="fas fa-globe"></i> DropCatch</li>
+    <li data-url="https://unblockproxy.win/"><i class="fas fa-globe"></i> UnblockProxy</li>
+    <li data-url="https://unblock-websites.com/"><i class="fas fa-globe"></i> Unblock Websites</li>
+    <li data-url="https://weboproxy.com/"><i class="fas fa-globe"></i> WeboProxy</li>
+    <li data-url="https://proxy-youtube.com/"><i class="fas fa-globe"></i> Proxy YouTube</li>
+  </ul>
+</div>
+
+<div class="content">
+  <div class="topbar">Pink4You Proxy</div>
+  <div class="iframe-container">
+    <iframe id="proxyFrame" src=""></iframe>
+  </div>
+</div>
+
+<script>
+  const iframe = document.getElementById('proxyFrame');
+  const listItems = document.querySelectorAll('#proxyList li');
+
+const emblem = "?emblem=yourEmblem"; // optional, remove if not needed
+
+  // Load proxy when clicking menu
+  listItems.forEach(item => {
+    item.onclick = () => {
+      iframe.src = item.dataset.url + emblem;
+    };
+  });
+</script>
+
+</body>
+</html>
