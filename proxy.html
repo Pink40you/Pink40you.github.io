@@ -6,16 +6,20 @@
 <title>Pink4You</title>
 <link rel="icon" type="image/png" href="pink4you.png" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 <style>
+  /* Body with dark background and pink particles effect (using a background image or gradient for simplicity here) */
   body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     display: flex;
     height: 100vh;
-    background: radial-gradient(circle, #ff69b4, #222);
+    background: radial-gradient(circle, #ff69b4, #222); /* Pink particles effect */
     background-size: cover;
-    color: #ff69b4;
+    color: #ff69b4; /* Pink text color */
   }
+
+  /* Sidebar menu styling */
   .sidebar {
     width: 250px;
     background: linear-gradient(180deg, #222, #111);
@@ -23,34 +27,22 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
   }
-  @media (max-width: 768px) {
-    .sidebar {
-      position: absolute;
-      z-index: 999;
-      height: 100%;
-      top: 0;
-      left: 0;
-      width: 250px;
-      transform: translateX(0);
-    }
-    .sidebar.hidden {
-      transform: translateX(-100%);
-    }
-  }
+
   .sidebar h1 {
     color: #ff69b4;
     font-size: 22px;
     margin-bottom: 10px;
     text-align: center;
   }
+
   .menu {
     list-style: none;
     padding: 0;
     margin: 0;
-    flex: 1;
+    flex: 1; /* allow to grow */
   }
+
   .menu li {
     padding: 12px 20px;
     cursor: pointer;
@@ -58,19 +50,25 @@
     margin-bottom: 4px;
     display: flex;
     align-items: center;
+    transition: background 0.2s;
   }
+
   .menu li:hover {
     background: #ff69b4;
     color: #222;
   }
+
   .menu li i {
     margin-right: 12px;
   }
+
+  /* Extra styles for the links at the bottom */
   .bottom-links {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
   }
+
   .bottom-links a {
     margin-top: 8px;
     padding: 8px;
@@ -80,17 +78,21 @@
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
+    transition: background-color 0.2s;
   }
+
   .bottom-links a:hover {
     background-color: #ff85b4;
   }
+
+  /* Main content style */
   .content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    position: relative;
-    width: 100%;
   }
+
+  /* Top bar styling */
   .topbar {
     padding: 10px 20px;
     background: #222;
@@ -98,33 +100,25 @@
     font-size: 20px;
     font-weight: bold;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-  }
-  #menuToggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #ff69b4;
-  }
-  #fullscreenToggle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background-color: #ff69b4;
-    color: #222;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 18px;
-    transition: background-color 0.2s, transform 0.2s;
   }
 
-  #fullscreenToggle:hover {
+  /* Button styling */
+  #toggleSidebar {
+    margin-left: 10px;
+    padding: 4px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #ff69b4;
+    color: #222;
+    transition: background-color 0.2s;
+  }
+
+  #toggleSidebar:hover {
     background-color: #ff85b4;
-    transform: scale(1.05);
   }
 
   /* iframe container */
@@ -138,12 +132,7 @@
     border: none;
   }
 
-  /* Responsive adjustments */
-  @media(max-width: 768px) {
-    #menuToggle {
-      display: block;
-    }
-  }
+  /* Scrollbar styling for sidebar (optional) */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -154,6 +143,7 @@
 </style>
 </head>
 <body>
+
 <div class="sidebar" id="proxySidebar">
   <h1>Pink4You</h1>
   <ul class="menu" id="proxyList">
@@ -165,6 +155,9 @@
     <li data-url="https://www.proxysite.com/"><i class="fas fa-globe"></i> Proxysite</li>
     <li data-url="https://coproxy.io/free-web-proxy-unblock-any-site/"><i class="fas fa-globe"></i> Coproxy</li>
     <li data-url="https://nettleweb.com/"><i class="fas fa-globe"></i> NettleWeb</li>
+    <li data-url="https://proxypal.net/"><i class="fas fa-globe"></i> ProxyPal</li>
+    <li data-url="https://www.lumiproxy.com/online-proxy/proxysite/"><i class="fas fa-globe"></i> LumiProxy</li>
+    <li data-url="https://www.911proxy.com/proxysite/"><i class="fas fa-globe"></i> 911Proxy</li>
     <li data-url="https://www-proxy.hidester.one/"><i class="fas fa-globe"></i> Hidester Proxy</li>
     <li data-url="https://www.4everproxy.com/"><i class="fas fa-globe"></i> 4everProxy</li>
     <li data-url="https://www.filterbypass.me/"><i class="fas fa-globe"></i> FilterBypass</li>
@@ -179,21 +172,20 @@
     <li data-url="https://unblock-websites.com/"><i class="fas fa-globe"></i> Unblock Websites</li>
     <li data-url="https://weboproxy.com/"><i class="fas fa-globe"></i> WeboProxy</li>
     <li data-url="https://proxy-youtube.com/"><i class="fas fa-globe"></i> Proxy YouTube</li>
+    <!-- Additional links at the bottom -->
     <div class="bottom-links">
       <a href="proxy.html" target="_blank">Open proxy.html</a>
       <a href="https://www.google.com" target="_blank">Go to Google</a>
     </div>
   </ul>
 </div>
+
 <div class="content">
   <div class="topbar">
-    <div style="display:flex; align-items:center;">
-      <i id="menuToggle" class="fas fa-bars" title="Menu"></i>
-      <span style="margin-left:10px;">Pink4You</span>
+    <div style="display: flex; align-items: center;">
+      <span>Pink4You</span>
+      <button id="toggleSidebar">Hide Proxy</button>
     </div>
-    <button id="fullscreenToggle" title="Toggle Sidebar">
-      <i class="fas fa-expand"></i>
-    </button>
   </div>
   <div class="iframe-container">
     <iframe id="proxyFrame" src=""></iframe>
@@ -203,25 +195,24 @@
 <script>
   const iframe = document.getElementById('proxyFrame');
   const listItems = document.querySelectorAll('#proxyList li');
-  const toggleButton = document.getElementById('fullscreenToggle');
+  const toggleButton = document.getElementById('toggleSidebar');
   const sidebar = document.getElementById('proxySidebar');
-  const menuIcon = document.getElementById('menuToggle');
-  menuIcon.onclick = () => {
-    sidebar.classList.toggle('hidden');
-  };
+
+  // Load proxy when clicking menu
   listItems.forEach(item => {
     item.onclick = () => {
       iframe.src = item.dataset.url;
     };
   });
+
+  // Toggle sidebar visibility
   toggleButton.onclick = () => {
-    if (sidebar.style.display === 'none' || sidebar.classList.contains('hidden')) {
-      sidebar.style.display = 'flex';
-      sidebar.classList.remove('hidden');
-      toggleButton.innerHTML = '<i class="fas fa-expand"></i>';
+    if (sidebar.style.display === 'none') {
+      sidebar.style.display = 'block';
+      toggleButton.textContent = 'Hide Proxy';
     } else {
       sidebar.style.display = 'none';
-      toggleButton.innerHTML = '<i class="fas fa-compress"></i>';
+      toggleButton.textContent = 'Show Proxy';
     }
   };
 </script>
