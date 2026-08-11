@@ -124,12 +124,37 @@
   /* iframe container */
   .iframe-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     border: none;
+  }
+
+  /* Controls below iframe */
+  .iframe-controls {
+    margin: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Copy button style */
+  #copyUrlBtn {
+    padding: 6px 12px;
+    border: none;
+    background-color: #ff69b4;
+    color: #222;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+
+  #copyUrlBtn:hover {
+    background-color: #ff85b4;
   }
 
   /* Scrollbar styling for sidebar (optional) */
@@ -174,7 +199,7 @@
     <li data-url="https://proxy-youtube.com/"><i class="fas fa-globe"></i> Proxy YouTube</li>
     <!-- Additional links at the bottom -->
     <div class="bottom-links">
-      <a href="proxy.html" target="_blank">Open proxy.html</a>
+      <a href="https://pink40you.github.io/proxy.html" target="_blank">Open proxy.html</a>
       <a href="https://www.google.com" target="_blank">Go to Google</a>
     </div>
   </ul>
@@ -190,6 +215,10 @@
   <div class="iframe-container">
     <iframe id="proxyFrame" src=""></iframe>
   </div>
+  <!-- Add the copy button below the iframe -->
+  <div class="iframe-controls">
+    <button id="copyUrlBtn">Copy URL</button>
+  </div>
 </div>
 
 <script>
@@ -197,6 +226,7 @@
   const listItems = document.querySelectorAll('#proxyList li');
   const toggleButton = document.getElementById('toggleSidebar');
   const sidebar = document.getElementById('proxySidebar');
+  const copyButton = document.getElementById('copyUrlBtn');
 
   // Load proxy when clicking menu
   listItems.forEach(item => {
@@ -208,12 +238,22 @@
   // Toggle sidebar visibility
   toggleButton.onclick = () => {
     if (sidebar.style.display === 'none') {
-      sidebar.style.display = 'block';
+      sidebar.style.display = 'flex';
       toggleButton.textContent = 'Hide Proxy';
     } else {
       sidebar.style.display = 'none';
       toggleButton.textContent = 'Show Proxy';
     }
+  };
+
+  // Copy current iframe URL to clipboard
+  copyButton.onclick = () => {
+    const currentUrl = iframe.src;
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      alert('URL copied to clipboard!');
+    }, () => {
+      alert('Failed to copy URL.');
+    });
   };
 </script>
 
